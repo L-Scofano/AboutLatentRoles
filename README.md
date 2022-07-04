@@ -1,7 +1,7 @@
 # Order NN
 ## Train
 ### Euclidean Distance
-python main_nba.py --euclidean_distance --model euclidean  --n_epoch 50 --wandb
+python main_nba_order_nn.py --euclidean_distance --model euclidean  --n_epoch 50 --wandb
 
 
 ### Order NN

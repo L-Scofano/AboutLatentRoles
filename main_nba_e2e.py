@@ -470,21 +470,6 @@ def train_frozen(verbose=True):
     print("best val:", best_val)  
 
 
-    '''
-    # Oracle coordinates
-    train_rank_oracle = torch.load("Oracle Dataset/train_ranking_oracle.npy")
-    train_rank_oracle = torch.from_numpy(np.array(train_rank_oracle))
-    train_rank_oracle = torch.split(train_rank_oracle, args.batch_size) 
-
-    test_rank_oracle = torch.load("Oracle Dataset/test_ranking_oracle.npy")
-    test_rank_oracle = torch.from_numpy(np.array(test_rank_oracle))
-    test_rank_oracle = torch.split(test_rank_oracle, args.batch_size)
-
-    val_rank_oracle = torch.load("Oracle Dataset/val_ ranking_oracle.npy")
-    val_rank_oracle = torch.from_numpy(np.array(val_rank_oracle))
-    val_rank_oracle = torch.split(val_rank_oracle, args.batch_size)'''
-
-
 
 # main function
 if __name__ == "__main__":
@@ -510,15 +495,6 @@ if __name__ == "__main__":
         if args.mode == "train":
             print("Frozen model")
             train_frozen()  
-
-    # if args.order_nn:
-    #     if args.mode == "train":
-    #         train_order_nn()
-    #         print("Training Order NN")
-    #     elif args.mode == "test":
-    #         test_order_nn()
-    #         print("Testing Order NN")
-
 
     if args.wandb:
         wandb.finish()

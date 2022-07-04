@@ -144,9 +144,6 @@ if args.euclidean_distance:
                     output, sorted_distance, og_distance, rank = get_output(input)
                     og_distance = torch.from_numpy(np.array(og_distance)).to(device)
 
-
-                    
-
                     loss = criterion(og_distance,predicted_euc)
 
 
@@ -173,19 +170,6 @@ if args.euclidean_distance:
 
 
 if args.order_nn:
-
-    # Load Oracle coordinates
-    # train_rank_oracle = torch.load("Oracle Dataset/train_ranking_oracle.npy")
-    # train_rank_oracle = torch.from_numpy(np.array(train_rank_oracle))
-    # train_rank_oracle = torch.split(train_rank_oracle, args.batch_size)
-
-    # test_rank_oracle = torch.load("Oracle Dataset/test_ranking_oracle.npy")
-    # test_rank_oracle = torch.from_numpy(np.array(test_rank_oracle))
-    # test_rank_oracle = torch.split(test_rank_oracle, args.batch_size)
-
-    # val_rank_oracle = torch.load("Oracle Dataset/val_ranking_oracle.npy")
-    # val_rank_oracle = torch.from_numpy(np.array(val_rank_oracle))
-    # val_rank_oracle = torch.split(val_rank_oracle, args.batch_size)
 
     device, model, optimizer, scheduler = [None]*4
     clip_grad=None # select max norm to clip gradients
