@@ -92,57 +92,57 @@ class SorterishWrapper(nn.Module):
 #         return sorted_x, rank, perm_matrix, scores
 
 
-class SorterishWrapper_supervised(nn.Module):
-    def __init__(self,  scorer, regularization_strength=1, exp_round_scale=1):
-        super(SorterishWrapper_supervised, self).__init__()
-        self.scorer = scorer
-        self.regularization_strength = regularization_strength
-        self.exp_round_scale = exp_round_scale
+# class SorterishWrapper_supervised(nn.Module):
+#     def __init__(self,  scorer, regularization_strength=1, exp_round_scale=1):
+#         super(SorterishWrapper_supervised, self).__init__()
+#         self.scorer = scorer
+#         self.regularization_strength = regularization_strength
+#         self.exp_round_scale = exp_round_scale
         
-    def intensity(self, x, scale=1):
-    #     return 1 if x == 0 else 0
-        return torch.exp(-(x/scale)**2)
+#     def intensity(self, x, scale=1):
+#     #     return 1 if x == 0 else 0
+#         return torch.exp(-(x/scale)**2)
     
-    def forward(self, x_not_sort, x_to_sort):
+#     def forward(self, x_not_sort, x_to_sort):
 
         
-        scores = self.scorer(x_to_sort)
+#         scores = self.scorer(x_to_sort)
 
-        rank = soft_rank(scores.cpu(), regularization_strength=self.regularization_strength).to(x_to_sort.device)
+#         rank = soft_rank(scores.cpu(), regularization_strength=self.regularization_strength).to(x_to_sort.device)
 
-        players = rank.shape[1]
-        # base is a batch*N*N tensor with columns [1,2...player_cnt]
-        base = torch.arange(1,players+1).to(x_to_sort.device).repeat(rank.shape[0],1).repeat_interleave(players).view(-1,players,players)
+#         players = rank.shape[1]
+#         # base is a batch*N*N tensor with columns [1,2...player_cnt]
+#         base = torch.arange(1,players+1).to(x_to_sort.device).repeat(rank.shape[0],1).repeat_interleave(players).view(-1,players,players)
 
-        # rank is repeated (along rows); computes rank-base (delta rank) and apply intensity fn
-        perm_matrix = self.intensity(rank.repeat_interleave(players).view(-1,players,players).transpose(1,2)-base, scale=self.exp_round_scale)
+#         # rank is repeated (along rows); computes rank-base (delta rank) and apply intensity fn
+#         perm_matrix = self.intensity(rank.repeat_interleave(players).view(-1,players,players).transpose(1,2)-base, scale=self.exp_round_scale)
         
-        x = torch.cat((x_to_sort, x_not_sort), dim =1)
+#         x = torch.cat((x_to_sort, x_not_sort), dim =1)
 
-        sorted_x = torch.einsum("ijkl,imk->ijml", x, perm_matrix)
-        # return sorted_x, scores, rank, base, perm_matrix
-        return scores, sorted_x, rank
+#         sorted_x = torch.einsum("ijkl,imk->ijml", x, perm_matrix)
+#         # return sorted_x, scores, rank, base, perm_matrix
+#         return scores, sorted_x, rank
 
 
-class SorterishWrapper_GT(nn.Module):
-    def __init__(self, exp_round_scale=1):
-        super(SorterishWrapper_GT, self).__init__()
+# class SorterishWrapper_GT(nn.Module):
+#     def __init__(self, exp_round_scale=1):
+#         super(SorterishWrapper_GT, self).__init__()
 
-        self.exp_round_scale = exp_round_scale
+#         self.exp_round_scale = exp_round_scale
         
-    def intensity(self, x, scale=1):
-        return torch.exp(-(x/scale)**2)
+#     def intensity(self, x, scale=1):
+#         return torch.exp(-(x/scale)**2)
     
-    def forward(self, x, rank):
+#     def forward(self, x, rank):
 
-        players = rank.shape[1]
-        # base is a batch*N*N tensor with columns [1,2...player_cnt]
-        base = torch.arange(1,players+1).to(x.device).repeat(rank.shape[0],1).repeat_interleave(players).view(-1,players,players)
-        # rank is repeated (along rows); computes rank-base (delta rank) and apply intensity fn
-        perm_matrix = self.intensity(rank.repeat_interleave(players).view(-1,players,players).transpose(1,2)-base, scale=self.exp_round_scale)
-        sorted_x = torch.einsum("ijkl,imk->ijml", x, perm_matrix)
+#         players = rank.shape[1]
+#         # base is a batch*N*N tensor with columns [1,2...player_cnt]
+#         base = torch.arange(1,players+1).to(x.device).repeat(rank.shape[0],1).repeat_interleave(players).view(-1,players,players)
+#         # rank is repeated (along rows); computes rank-base (delta rank) and apply intensity fn
+#         perm_matrix = self.intensity(rank.repeat_interleave(players).view(-1,players,players).transpose(1,2)-base, scale=self.exp_round_scale)
+#         sorted_x = torch.einsum("ijkl,imk->ijml", x, perm_matrix)
 
-        return sorted_x
+#         return sorted_x
 
 
 

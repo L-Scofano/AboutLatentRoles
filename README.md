@@ -13,8 +13,8 @@ python main_nba.py --order_nn --model order_nn --n_epoch 50 --obs 1 --wandb
 - ordering 1 = getoutput / SorterishWrapperTest
 - ordeing 2 = reordering_dataset / SorterishWrapperTest2
 
-### Pre trained Order NN
-python main_nba.py --order_nn --pre_trained --model order_nn --mode test --wandb 
+### Order NN
+python main_nba_order_nn.py --order_nn --model order_nn --mode test --ordering1
 
 
 # E2E

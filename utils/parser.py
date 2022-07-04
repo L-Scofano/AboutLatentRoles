@@ -175,7 +175,7 @@ parser.set_defaults(wandb=False)
 parser.add_argument(
     "--reg",
     type=float,
-    default=0.0001,
+    default=1e-4,
     help="Parameter for curriculum loss' penalization.",
 )
 
@@ -189,7 +189,7 @@ parser.add_argument(
 parser.add_argument(
     "--scale",
     type=float,
-    default=0.001,
+    default=1e-2,
     help="Parameter for curriculum loss' penalization.",
 )
 
