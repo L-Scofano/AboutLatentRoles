@@ -1,11 +1,18 @@
-# Order NN
-## Train
-### Euclidean Distance
+<p align="center">
+    <a href="https://pytorch.org/get-started/locally/"><img alt="PyTorch" src="https://img.shields.io/badge/-PyTorch-red?logo=pytorch&labelColor=gray"></a>
+    <a href="https://black.readthedocs.io/en/stable/"><img alt="Code style: black" src="https://img.shields.io/badge/code%20style-black-000000.svg"></a>
+</p>
+
+The official PyTorch implementation of the **5th IEEE/CVF CVPR Precognition Workshop** paper [**Best Practices for 2-Body Pose Forecasting**](https://arxiv.org/abs/2304.05758).
+
+## Order NN
+
+### Train Euclidean Distance
 ```
 python main_nba_order_nn.py --euclidean_distance --model euclidean  --n_epoch 50 --wandb
-```
+``
 
-### Order NN
+### Train Order NN
 ```
 python main_nba.py --order_nn --model order_nn --n_epoch 50  --wandb
 python main_nba.py --order_nn --model order_nn --n_epoch 50 --obs 1 --wandb
@@ -15,7 +22,7 @@ python main_nba.py --order_nn --model order_nn --n_epoch 50 --obs 1 --wandb
 - ordering 1 = getoutput / SorterishWrapperTest
 - ordeing 2 = reordering_dataset / SorterishWrapperTest2
 
-### Order NN
+### Test Order NN
 ```
 python main_nba_order_nn.py --order_nn --model order_nn --mode test --ordering1
 ```
