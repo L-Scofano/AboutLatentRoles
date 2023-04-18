@@ -10,7 +10,7 @@ The official PyTorch implementation of the **5th IEEE/CVF CVPR Precognition Work
 ### Train Euclidean Distance
 ```
 python main_nba_order_nn.py --euclidean_distance --model euclidean  --n_epoch 50 --wandb
-``
+```
 
 ### Train Order NN
 ```
