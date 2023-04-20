@@ -19,7 +19,7 @@ python main_nba.py --order_nn --model order_nn --n_epoch 50  --wandb
 python main_nba.py --order_nn --model order_nn --n_epoch 50 --obs 1 --wandb
 ```
 ## Test
--> We have two ordering GT:
+-> We have two Ground Truth orderings:
 - ordering 1 = getoutput / SorterishWrapperTest
 - ordeing 2 = reordering_dataset / SorterishWrapperTest2
 
