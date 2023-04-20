@@ -8,6 +8,8 @@ The official PyTorch implementation of the **AI4ABM ICLR '23 Workshop** paper [A
 
 Visit our [webpage](https://www.pinlab.org/aboutlatentroles) for more details.
 
+![teaser](teaser.png)
+
 ## Order NN
 
 ### Train Euclidean Distance
