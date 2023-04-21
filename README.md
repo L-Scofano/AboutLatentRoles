@@ -10,4 +10,4 @@ Visit our [webpage](https://www.pinlab.org/aboutlatentroles) for more details.
 
 ![teaser](teaser.png)
 
-## The code will be released shortly
+:newspaper: ## The code will be released shortly
