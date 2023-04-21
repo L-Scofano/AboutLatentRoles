@@ -10,7 +10,19 @@ Visit our [webpage](https://www.pinlab.org/aboutlatentroles) for more details.
 
 ![teaser](teaser.png)
 
-## Order NN
+## Setup
+To install the required packages, run the following command:
+
+```
+conda create -n latent_roles python=3.6
+conda activate latent_roles
+pip install -r requirements.txt
+```
+As we point out in the paper there are several components in the network, and all are trainable separately. We provide the following scripts to train and test the different components.
+
+## Order Neural Network
+
+OrderNN is a module that allows the permutation of the players such that each player is assigned to a latent role. 
 
 ### Train Euclidean Distance
 ```
